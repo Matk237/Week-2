@@ -44,5 +44,57 @@
 
 #### Discovery: /hidden_text directory located
 
+## Hidden Content Exploration
+
+Access: http://192.168.100.215/hidden_text
+
+<img width="929" height="489" alt="image" src="https://github.com/user-attachments/assets/d5f6ee83-9389-4b1e-a4fd-651a8967769b" />
+
+- Click "Thank you..." link
+- QR code image downloads
+
+<img width="933" height="790" alt="image" src="https://github.com/user-attachments/assets/3324cb3b-06ce-4347-8bc0-e78b4bd1f4cf" />
+
+## QR Code Decoding
+
+Upload QR code to: https://zxing.org/w/decode.jspx
+
+<img width="849" height="588" alt="image" src="https://github.com/user-attachments/assets/0fd4ea83-70f0-4031-8684-4a9e2e404a37" />
+
+#### Credentials Extracted:
+
+    Username: userftp
+    
+    Password: ftpp@ssword
 
 
+# Phase 3: FTP Access & File Extraction
+
+## FTP Connection
+
+    ftp 192.168.100.215
+
+<img width="665" height="363" alt="image" src="https://github.com/user-attachments/assets/3a42e3df-235b-4bd4-b767-f4f7683f7fea" />
+
+### Download Target Files
+
+    ls
+    
+    get information.txt
+    
+    get p_lists.txt
+
+<img width="932" height="234" alt="image" src="https://github.com/user-attachments/assets/aa06268b-fb98-43da-828d-564bcb27fa75" />
+
+### Content Analysis
+
+    cat information.txt
+    cat p_lists.txt
+
+<img width="942" height="704" alt="image" src="https://github.com/user-attachments/assets/1d0a9cab-4e1b-4edc-aba2-35154cae24d3" />
+
+#### Findings:
+
+- information.txt → Username revealed: robin
+
+- p_lists.txt → SSH password wordlist obtained
