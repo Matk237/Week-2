@@ -20,4 +20,15 @@
 
   <img width="738" height="198" alt="image" src="https://github.com/user-attachments/assets/fbd56173-fcfb-4248-b9ab-d19339a252e4" />
 
+  #### Open Services Found:
+
+  | Port | Service |
+  |------|---------|
+  | 21   | ftp     |
+  |------|---------|
+  | 22   | ssh     |
+  |------|---------|
+  | 80   | http    |
+  |------|---------|
+
 
