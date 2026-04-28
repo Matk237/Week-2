@@ -27,6 +27,22 @@
   | 21   | ftp     |  
   | 22   | ssh     |  
   | 80   | http    |
- 
+
+ # Phase 2: Web Application Analysis
+
+ ## **Initial HTTP Reconnaissance**
+
+  Navigate to: http://192.168.100.215
+
+  <img width="917" height="880" alt="image" src="https://github.com/user-attachments/assets/fd5c792e-2ae9-4a61-ad42-bca9c932b874" />
+
+  ### Directory Enumeration
+
+     gobuster dir -u http://192.168.100.215 -w /usr/share/wordlists/dirbuster/directory-list-2.3-medium.txt
+
+<img width="882" height="363" alt="image" src="https://github.com/user-attachments/assets/116e8416-73e8-46d9-b735-e4b441b963ce" />
+
+#### Discovery: /hidden_text directory located
+
 
 
