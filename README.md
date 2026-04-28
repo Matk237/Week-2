@@ -10,5 +10,7 @@ BlueMoon Penetration Testing Walkthrough
 
       iconfig
 
+   Result: Attacker IP = 192.168.100.216
+
   <img width="705" height="335" alt="image" src="https://github.com/user-attachments/assets/c8944145-7af2-4686-bd85-a5c1c75b54c7" />
 
